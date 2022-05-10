@@ -1,12 +1,11 @@
 ﻿using MovimentosManuais.ApplicationCore.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Text;
 
 namespace MovimentosManuais.ApplicationCore.Interfaces.Services
 {
-    public interface IProdutoService : IServices<Produto>
-    {
-        
+    public interface IMovimentosManuaisServices:IServices<Movimento_Manual>
+    {   
     }
 }

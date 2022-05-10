@@ -26,6 +26,12 @@ namespace MovimentosManuais.UI
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddHttpClient(InfraStruture.Extension.Extensions.NameHppClient, httpClient =>
+            {
+                httpClient.BaseAddress = new System.Uri("http://localhost:5000/api/");
+
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

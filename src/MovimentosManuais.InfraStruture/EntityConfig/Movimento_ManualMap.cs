@@ -44,7 +44,10 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
                    .HasColumnType("VARCHAR(15)");
 
             builder.Property(e => e.VAL_VALOR)
-                   .HasColumnType("NUMERIC(18,2)");                   
+                   .HasColumnType("NUMERIC(18,2)");
+
+            builder.HasOne(p => p.Produto_Cosif)
+                .WithMany(p => p.Contatos);
         }
     }
 }

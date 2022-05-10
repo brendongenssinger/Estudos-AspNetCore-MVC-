@@ -9,12 +9,9 @@ namespace MovimentosManuais.InfraStruture.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Produto_Cosif> builder)
         {
-            builder.HasKey(c => c.COD_PRODUTO);
-
             builder.HasKey(c => c.COD_COSIF);
 
-            builder.Property(e => e.COD_COSIF)
-                   .HasColumnType("CHAR(11)");                   
+            builder.HasKey(c => c.COD_PRODUTO);
 
             builder.Property(e => e.COD_CLASSIFICACAO)
                    .HasColumnType("CHAR(6)")

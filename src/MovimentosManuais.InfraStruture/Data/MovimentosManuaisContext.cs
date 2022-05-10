@@ -8,7 +8,7 @@ namespace MovimentosManuais.InfraStruture.Data
     {
         public MovimentosManuaisContext(DbContextOptions<MovimentosManuaisContext> options) : base(options)
         {
-
+            
         }
 
         public DbSet<Produto> Produtos { get; set; }
@@ -26,6 +26,10 @@ namespace MovimentosManuais.InfraStruture.Data
             builder.ApplyConfiguration(new Movimento_ManualMap());
             builder.ApplyConfiguration(new Produto_CosifMap());
             builder.ApplyConfiguration(new ProdutoMap());
+
+            
         }
+
+       
     }
 }

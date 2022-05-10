@@ -17,8 +17,9 @@ namespace MovimentosManuais.InfraStruture.Repository
             _dbContext = dbContext;
         }
 
-        public TEntity Adicionar(TEntity entity)
+        public virtual TEntity Adicionar(TEntity entity)
         {
+            
             _dbContext.Set<TEntity>().Add(entity);
             _dbContext.SaveChanges();
 
@@ -41,7 +42,7 @@ namespace MovimentosManuais.InfraStruture.Repository
             return _dbContext.Set<TEntity>().Find(Id);
         }
 
-        public IEnumerable<TEntity> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             return _dbContext.Set<TEntity>().AsEnumerable();
         }

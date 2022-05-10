@@ -1,0 +1,149 @@
+﻿@using MovimentosManuais.ApplicationCore.Entity
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Movimento_Manual;
+
+@{
+  
+
+}
+    <div class="row">
+        
+        <form class="col-12" asp-action="IncluirDados" autocomplete="off">
+            <h1>Movimentos Manuais</h1>
+          <div class="mb-3" >
+             <div class="row rows-cols-2">
+                 <div class="col">
+                    <label for="exampleInputEmail1" class="form-label">Mês:</label>
+                    <input readonly=@ViewData["ReadOnly"] asp-for="DAT_MES" type="number" min="1" max="12" 
+                    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    @Html.ValidationMessageFor(x=> x.DAT_MES,"Por favor informar um valor válido.",new { @class = "text-danger" })
+                 </div>
+                 <div class="col">
+                    <label for="exampleInputEmail1" class="form-label">Ano:</label>
+                    <input asp-for="DAT_ANO" type="number" class="form-control" id="exampleInputEmail1" 
+                    aria-describedby="emailHelp" readonly=@ViewData["ReadOnly"]>
+                 </div>
+             </div>
+              <div class="row rows-cols-1">
+                 <div class="col-6">
+                    <label for="exampleInputEmail1" class="form-label">Produto:</label>
+                    <div>
+                        @if((bool)@ViewData["ReadOnly"])
+                        {
+                            @Html.DropDownListFor(m=>m.COD_PRODUTO,(SelectList)ViewData["PRODUTO"],
+                                "*** Selecione ***",new{@class="form-select",@style="width:100%",@disabled= @ViewData["ReadOnly"]})
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m=>m.COD_PRODUTO,(SelectList)ViewData["PRODUTO"],"*** Selecione ***",new{@class="form-select" ,@style="width:100%"})
+                        }
+                    </div>
+                </div>
+                 <div class="col-6">
+                    <label for="exampleInputEmail1" class="form-label">Cosif:</label>
+                    <div>
+                        @if((bool)@ViewData["ReadOnly"])
+                        {
+                            @Html.DropDownListFor(m=>m.COD_COSIF,(SelectList)ViewData["PRODUTO_COSIF"],
+                                "*** Selecione ***",new{@class="form-select",@style="width:100%",@disabled= @ViewData["ReadOnly"]})
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m=>m.COD_COSIF,(SelectList)ViewData["PRODUTO_COSIF"],
+                                "*** Selecione ***",new{@class="form-select" ,@style="width:100%"})
+                        }
+                    </div>
+
+                 </div>
+             </div>
+             <div class="row">
+                <div class="col-6">
+                    <label for="exampleInputPassword1" class="form-label">Valor:</label>
+                    <input type="number" class="form-control" id="exampleInputPassword1" 
+                    readonly=@ViewData["ReadOnly"] step="0.01",min="0" asp-for="VAL_VALOR">
+                </div>
+
+             </div>
+         <div class="row">
+            <div class="col-6">
+                <label for="exampleInputPassword1" class="form-label">Descrição:</label>
+                <textarea class="form-control" aria-label="With textarea" readonly=@ViewData["ReadOnly"] asp-for="DES_DESCRICAO"></textarea>
+                <div style="float:right;margin-top:10px">
+                    <button type="submit" class="btn btn-primary" asp-action="Limpar">Limpar</button>
+                        @{
+                            bool checkButton = false;
+                            @if ((bool)ViewData["ReadOnly"])
+                            {
+                                checkButton = false;
+                                
+                            }
+                            else
+                            {
+                            checkButton = true;
+                                
+                            }
+                        }
+                        
+                        <button class="btn btn-primary" asp-action="Novo" disabled=@checkButton>Novo</button>
+                    <button type="submit" class="btn btn-primary">Incluir</button>
+                </div>
+             </div>
+          </div>
+          </div>
+         
+        </form>
+    </div>
+    <div class="row">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Mes</th>
+      <th scope="col">Ano</th>
+      <th scope="col">Codigo Do Produto</th>
+      <th scope="col">Descricao do Produto</th>
+      <th scope="col">NR Lançamento</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+      
+      @foreach(var item in ViewBag.ListaGrid)
+    {   
+            
+        <tr>
+      
+      <td>@item.DAT_MES.ToString("00")</td>
+      <td>@item.DAT_ANO.ToString("00")</td>
+      <td>@item.COD_PRODUTO</td>
+      <td>@item.Produto_Cosif.COD_COSIF</td>
+      <td>@item.NUM_LANCAMENTO.ToString("000")</td>
+      <td>@item.DES_DESCRICAO</td>
+      <td>@item.VAL_VALOR</td>
+      
+    </tr>
+      
+            }
+    @*<tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>twitter</td>
+    </tr>*@
+  </tbody>
+</table>
+    </div>

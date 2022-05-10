@@ -16,8 +16,4 @@
     <ProjectReference Include="..\MovimentosManuais.InfraStruture\MovimentosManuais.InfraStruture.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
