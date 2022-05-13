@@ -56,7 +56,11 @@ namespace MovimentosManuais.InfraStruture.Services
 
         public IEnumerable<Movimento_Manual> ObterTodos()
         {
+<<<<<<< HEAD
+            var result = _repository.ObterTodos().ToList();
+=======
             var result = _repository.ObterTodos().ToList().Take(5);
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
             return result;
         }
 

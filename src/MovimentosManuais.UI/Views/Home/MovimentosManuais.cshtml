@@ -17,7 +17,11 @@
              <div class="row rows-cols-2">
                  <div class="col">
                     <label for="exampleInputEmail1" class="form-label">Mês:</label>
+<<<<<<< HEAD
+                    <input readonly=@ViewData["ReadOnly"] asp-for="DAT_MES" type="number" min="1" max="12"
+=======
                     <input readonly=@ViewData["ReadOnly"] asp-for="DAT_MES" type="number" min="1" max="12" 
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
                     class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                     @Html.ValidationMessageFor(x=> x.DAT_MES,"Por favor informar um valor válido.",new { @class = "text-danger" })
                  </div>
@@ -34,6 +38,16 @@
                         @if((bool)@ViewData["ReadOnly"])
                         {
                             @Html.DropDownListFor(m=>m.COD_PRODUTO,(SelectList)ViewData["PRODUTO"],
+<<<<<<< HEAD
+                                "*** Selecione ***",new{@class="form-select selectProd",@style="width:100%",@disabled= @ViewData["ReadOnly"]})
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(m=>m.COD_PRODUTO,(SelectList)ViewData["PRODUTO"],"*** Selecione ***",new{@class="form-select" ,@style="width:100%",@onchange="Check()"})
+                        }
+                    </div>
+                    
+=======
                                 "*** Selecione ***",new{@class="form-select",@style="width:100%",@disabled= @ViewData["ReadOnly"]})
                         }
                         else
@@ -41,10 +55,21 @@
                             @Html.DropDownListFor(m=>m.COD_PRODUTO,(SelectList)ViewData["PRODUTO"],"*** Selecione ***",new{@class="form-select" ,@style="width:100%"})
                         }
                     </div>
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
                 </div>
                  <div class="col-6">
                     <label for="exampleInputEmail1" class="form-label">Cosif:</label>
                     <div>
+<<<<<<< HEAD
+                        <select class="form-select" data-val="true" 
+                        data-val-required="The COD_COSIF field is required." 
+                        disabled="true" 
+                        id="dropDownCosif" 
+                        name="COD_COSIF" style="width:100%">
+                        <option value="selecione">*** Selecione ***</option>
+                            
+                        </select>
+=======
                         @if((bool)@ViewData["ReadOnly"])
                         {
                             @Html.DropDownListFor(m=>m.COD_COSIF,(SelectList)ViewData["PRODUTO_COSIF"],
@@ -55,6 +80,7 @@
                             @Html.DropDownListFor(m=>m.COD_COSIF,(SelectList)ViewData["PRODUTO_COSIF"],
                                 "*** Selecione ***",new{@class="form-select" ,@style="width:100%"})
                         }
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
                     </div>
 
                  </div>
@@ -127,6 +153,9 @@
     </tr>
       
             }
+<<<<<<< HEAD
+    
+=======
     @*<tr>
       <th scope="row">1</th>
       <td>Mark</td>
@@ -144,6 +173,7 @@
       <td colspan="2">Larry the Bird</td>
       <td>twitter</td>
     </tr>*@
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
   </tbody>
 </table>
     </div>
