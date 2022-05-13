@@ -19,6 +19,10 @@ namespace MovimentosManuais.Api
             var host = CreateWebHostBuilder(args).Build();
             CreateDbIfNotExists(host);
             host.Run();
+<<<<<<< HEAD
+            Console.ReadKey();
+=======
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
         }
 
         private static void CreateDbIfNotExists(IWebHost host)

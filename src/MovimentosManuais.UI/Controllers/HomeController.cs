@@ -19,7 +19,11 @@ namespace MovimentosManuais.UI.Controllers
         private List<Produto> _listProduto;
         private List<Produto_Cosif> _listProdutoCosif;
         private SelectList _selectedItemProdutos;
+<<<<<<< HEAD
+        private List<Produto_Cosif> _selectedItemCosif;
+=======
         private SelectList _selectedItemCosif;
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
         private HttpClient _httpClient;
         private List<Movimento_Manual> _listGridManual;
         public HomeController(IHttpClientFactory httpClientFactory)
@@ -52,11 +56,18 @@ namespace MovimentosManuais.UI.Controllers
             var responseProdutosCosif = _httpClient.GetAsync("ProdutosCosif").GetAwaiter().GetResult();
             if (responseProdutosCosif.IsSuccessStatusCode)
             {
+<<<<<<< HEAD
+                _selectedItemCosif = JsonConvert.DeserializeObject<List<Produto_Cosif>>(
+                                            responseProdutosCosif.Content.ReadAsStringAsync()
+                                                    .GetAwaiter()
+                                                        .GetResult());
+=======
                 _selectedItemCosif = new SelectList(
                                     JsonConvert.DeserializeObject<List<Produto_Cosif>>(
                                             responseProdutosCosif.Content.ReadAsStringAsync()
                                                     .GetAwaiter()
                                                         .GetResult()), "COD_COSIF", "COD_PRODUTO");
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
 
             }
         }
@@ -95,7 +106,11 @@ namespace MovimentosManuais.UI.Controllers
             ViewData["PRODUTO_COSIF"] = _selectedItemCosif;
             CarregarListaGrid();
             ViewBag.ListaGrid = _listGridManual;
+<<<<<<< HEAD
+            return View(new Movimento_Manual());
+=======
             return View();
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
         }
         public IActionResult Novo() 
         {
@@ -105,7 +120,11 @@ namespace MovimentosManuais.UI.Controllers
             CarregarListaGrid();
             ViewBag.ListaGrid = _listGridManual;
 
+<<<<<<< HEAD
+            return View("MovimentosManuais", new Movimento_Manual());
+=======
             return View("MovimentosManuais");
+>>>>>>> fbdacfb834b1711aa4135de4f176d0497be77dad
         }
 
         [HttpPost]
@@ -148,6 +167,13 @@ namespace MovimentosManuais.UI.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpGet]
+        
+        public IActionResult Get(string IdProduto)
+        {
+            return Ok(_selectedItemCosif.Where(x=>x.COD_PRODUTO==IdProduto));
         }
     }
 }
